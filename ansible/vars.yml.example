@@ -18,9 +18,5 @@ easyrsa_clients:
 - name: clientTwo
   state: present
 - name: clientThree
-  state: absent
-- name: clientFour
-  state: absent
-- name: clientFive
-  state: absent
+  state: present
 ...
