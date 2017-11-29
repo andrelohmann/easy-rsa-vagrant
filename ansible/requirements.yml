@@ -1,0 +1,5 @@
+---
+- src: https://github.com/andrelohmann/ansible-easy_rsa
+  version: 1.0.2
+  name: andrelohmann.easy_rsa
+...
