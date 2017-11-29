@@ -23,5 +23,6 @@ Vagrant.configure("2") do |config|
     ansible.install_mode = :pip
     ansible.version = "latest"
     ansible.playbook = "ansible/playbook.yml"
+    ansible.galaxy_role_file = "ansible/requirements.yml"
   end
 end
