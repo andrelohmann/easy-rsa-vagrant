@@ -19,4 +19,20 @@ easyrsa_clients:
   state: present
 - name: clientThree
   state: present
+
+openvpn_server_ip: ""
+openvpn_server_port: "1194"
+openvpn_server_proto: "tcp/udp"
+openvpn_dev: "tun/tap"
+openvpn_additional_parameters:
+- resolv-retry infinite
+- nobind
+- user nobody
+- group nogroup
+- persist-key
+- persist-tun
+- remote-cert-tls server
+- cipher AES-128-CBC
+- comp-lzo
+- verb 3
 ...

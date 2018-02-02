@@ -1,0 +1,26 @@
+---
+
+# Block start add client
+- block:
+
+  - name: read ca content
+    set_fact:
+      _crt: "{{lookup('file', easyrsa_dir+'/easy-rsa/keys/'+client.name+'.crt') }}"
+
+  - name: read ta content
+    set_fact:
+      _key: "{{lookup('file', easyrsa_dir+'/easy-rsa/keys/'+client.name+'.key') }}"
+
+  - name: add client.ovpn
+    template:
+      src: client.ovpn.j2
+      dest: "{{ easyrsa_dir }}/easy-rsa/keys/{{ client.name }}.ovpn"
+      owner: root
+      group: root
+      mode: "0644"
+
+
+  # Block condition add client
+  when: ((client.state is defined and client.state == 'present') or client.state is not defined)
+# Block end add client
+...

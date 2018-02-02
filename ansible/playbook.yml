@@ -4,8 +4,8 @@
   become_method: sudo
 
   vars:
-    easyrsa_user: ubuntu
-    easyrsa_dir: "/home/ubuntu/ca"
+    easyrsa_user: vagrant
+    easyrsa_dir: "/home/vagrant/ca"
 
   pre_tasks:
   - name: Include vars.yml
@@ -14,4 +14,19 @@
 
   roles:
     - andrelohmann.easy_rsa
+
+  tasks:
+  - name: read ca content
+    set_fact:
+      _ca: "{{lookup('file', easyrsa_dir+'/easy-rsa/keys/ca.crt') }}"
+
+  - name: read ta content
+    set_fact:
+      _ta: "{{lookup('file', easyrsa_dir+'/easy-rsa/keys/ta.key') }}"
+
+  - name: iterate clients
+    include: client.yml
+    with_items: "{{ easyrsa_clients }}"
+    loop_control:
+      loop_var: client
 ...

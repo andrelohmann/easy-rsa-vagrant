@@ -1,0 +1,30 @@
+client
+remote {{ openvpn_server_ip }} {{ openvpn_server_port }}
+dev {{ openvpn_dev }}
+proto {{ openvpn_server_proto }}
+{% if openvpn_additional_parameters is defined %}
+{% for param in openvpn_additional_parameters %}
+{{ param }}
+{% endfor %}
+{% endif %}
+
+ca [inline]
+cert [inline]
+key [inline]
+tls-auth [inline] 1
+
+<ca>
+{{ _ca }}
+</ca>
+
+<cert>
+{{ _crt }}
+</cert>
+
+<key>
+{{ _key }}
+</key>
+
+<tls-auth>
+{{ _ta }}
+</tls-auth>

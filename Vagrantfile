@@ -15,8 +15,8 @@ Vagrant.configure("2") do |config|
     vb.cpus = "1"
   end
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "ansible", "/vagrant/ansible", create: true, owner: "ubuntu", group: "ubuntu", mount_options: ["dmode=777,fmode=777"]
-  config.vm.synced_folder "ca", "/home/ubuntu/ca", create: true, owner: "ubuntu", group: "ubuntu", mount_options: ["dmode=777,fmode=777"]
+  config.vm.synced_folder "ansible", "/vagrant/ansible", create: true, owner: "vagrant", group: "vagrant", mount_options: ["dmode=777,fmode=777"]
+  config.vm.synced_folder "ca", "/home/vagrant/ca", create: true, owner: "vagrant", group: "vagrant", mount_options: ["dmode=777,fmode=777"]
   config.vbguest.auto_update = true
   config.vm.provision "ansible_local" do |ansible|
     ansible.install = true
