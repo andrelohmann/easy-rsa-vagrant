@@ -1,7 +1,8 @@
 /.vagrant
 /ca/easy-rsa
 /ansible/roles
-/ansible/vars.yml
+/ansible/custom_vars.yml
 .DS_Store
 *.retry
 *.log
+config.yml

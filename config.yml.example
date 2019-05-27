@@ -1,0 +1,5 @@
+---
+configs:
+  memory: "1024"
+  cpus: "1"
+...

@@ -8,9 +8,14 @@
     easyrsa_dir: "/home/vagrant/ca"
 
   pre_tasks:
-  - name: Include vars.yml
+  - name: check for file custom_vars.yml
+    stat:
+      path: custom_vars.yml
+    register: stat_custom_vars
+  - name: load custom vars, if existent
     include_vars:
-      file: vars.yml
+      file: custom_vars.yml
+    when: stat_custom_vars.stat.exists
 
   roles:
     - andrelohmann.easy_rsa

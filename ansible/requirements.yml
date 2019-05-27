@@ -1,5 +1,3 @@
 ---
-- src: https://github.com/andrelohmann/ansible-role-easy_rsa
-  version: 1.0.3
-  name: andrelohmann.easy_rsa
+- andrelohmann.easy_rsa
 ...
